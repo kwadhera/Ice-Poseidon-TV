@@ -35,7 +35,7 @@ var showTestNotification = function() {
   
 	if (localStorage.notificationSoundEnabled) {
 		var volume = (localStorage.notificationVolume / 100);
-		soundEffect.volume = (typeof volume == 'undefined' ? 0.75 : volume);
+		soundEffect.volume = (typeof volume == 'undefined' ? 0.50 : volume);
 		soundEffect.play();
 	}
 };

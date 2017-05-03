@@ -14,7 +14,7 @@ var showNotification = function() {
   
 	if (localStorage.notificationSoundEnabled) {
 		var volume = (localStorage.notificationVolume / 100);
-		soundEffect.volume = (typeof volume == 'undefined' ? 0.75 : volume);
+		soundEffect.volume = (typeof volume == 'undefined' ? 0.50 : volume);
 		soundEffect.play();
 	}
   
@@ -40,14 +40,6 @@ var checkIfLive = function() {
 	});
 }
 
-if (!localStorage.isInitialized) {
-	localStorage.isLive = false;
-	localStorage.isActivated = true;
-	localStorage.notificationSoundEnabled = true;
-	localStorage.notificationVolume = 0.75;
-	localStorage.isInitialized = true;
-};
-
 if (window.Notification) {
 	setInterval(function() {
 		checkIfLive();
@@ -58,5 +50,11 @@ new Notification('Ice Poseidon TV', {
 	icon: 'icons/64.png',
 	body: 'Thanks for installing, enjoy!',
 });
+
+localStorage.isLive = false;
+localStorage.isActivated = true;
+localStorage.notificationSoundEnabled = true;
+localStorage.notificationVolume = 50;
+localStorage.isInitialized = true;
 
 checkIfLive();
