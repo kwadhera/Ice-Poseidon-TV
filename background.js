@@ -2,7 +2,7 @@ var API_KEY = 'AIzaSyAx8sFQyrU2LshrpKCzcPnpo0bH_bmwXKU',
 	CHANNEL_ID = 'UCv9Edl_WbtbPeURPtFDo-uA',
 	soundEffect = new Audio('online.mp3');
 
-var showNotification = function {
+var showNotification = function() {
 	var time = /(..)(:..)/.exec(new Date());
 	var hour = time[1] % 12 || 12;
 	var period = time[1] < 12 ? 'AM' : 'PM';
