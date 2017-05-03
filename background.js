@@ -43,7 +43,7 @@ var checkIfLive = function() {
 if (window.Notification) {
 	setInterval(function() {
 		checkIfLive();
-	}, 60000);
+	}, 60000 * 5);
 };
 
 new Notification('Ice Poseidon TV', {
