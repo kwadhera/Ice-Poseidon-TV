@@ -1,25 +1,26 @@
-var API_KEY = 'AIzaSyAx8sFQyrU2LshrpKCzcPnpo0bH_bmwXKU'
-var CHANNEL_ID = 'UCv9Edl_WbtbPeURPtFDo-uA';
+var API_KEY = 'AIzaSyAx8sFQyrU2LshrpKCzcPnpo0bH_bmwXKU',
+	CHANNEL_ID = 'UCv9Edl_WbtbPeURPtFDo-uA',
+	soundEffect = new Audio('online.mp3');
 
-function showNotification() {
-  var time = /(..)(:..)/.exec(new Date());
-  var hour = time[1] % 12 || 12;
-  var period = time[1] < 12 ? 'AM' : 'PM';
+var showNotification = function {
+	var time = /(..)(:..)/.exec(new Date());
+	var hour = time[1] % 12 || 12;
+	var period = time[1] < 12 ? 'AM' : 'PM';
   
-  var notification = new Notification('Live! (' + hour + time[2] + ' ' + period + ')', {
-    icon: 'icons/64.png',
-    body: 'Ice Poseidon has started streaming.',
-  });
+	var notification = new Notification('Live! (' + hour + time[2] + ' ' + period + ')', {
+		icon: 'icons/64.png',
+		body: 'Ice Poseidon has started streaming.',
+	});
   
-  notification.onclick = function() {
-	  window.open('https://gaming.youtube.com/ice_poseidon/live')
-  }
-};
-
-if (!localStorage.isInitialized) {
-	localStorage.isActivated = true;
-	localStorage.isLive = false;
-	localStorage.isInitialized = true;
+	if (localStorage.notificationSoundEnabled) {
+		var volume = (localStorage.notificationVolume / 100);
+		soundEffect.volume = (typeof volume == 'undefined' ? 0.75 : volume);
+		soundEffect.play();
+	}
+  
+	notification.onclick = function() {
+		window.open('https://gaming.youtube.com/ice_poseidon/live')
+	}
 };
 
 var checkIfLive = function() {
@@ -38,6 +39,14 @@ var checkIfLive = function() {
 		}
 	});
 }
+
+if (!localStorage.isInitialized) {
+	localStorage.isLive = false;
+	localStorage.isActivated = true;
+	localStorage.notificationSoundEnabled = true;
+	localStorage.notificationVolume = 0.75;
+	localStorage.isInitialized = true;
+};
 
 if (window.Notification) {
 	setInterval(function() {

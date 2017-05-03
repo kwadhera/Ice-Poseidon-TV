@@ -18,3 +18,7 @@ h2 {
   padding: 3px 5px;
   font-size: 100%
 }
+
+#options table tr td:first-child {
+	font-weight: bold;
+}

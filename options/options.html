@@ -3,6 +3,7 @@
   <head>
     <title>Ice Poseidon TV</title>
     <link href="options.css" rel="stylesheet" type="text/css">
+	<script src="../external/jquery.min.js"></script>
     <script src="options.js"></script>
   </head>
   <body>
@@ -12,10 +13,23 @@
     </h1>
     <h2>Options</h2>
     <form id="options">
-      <input type="checkbox" name="isActivated" checked>
-      Display a notification when Ice goes live
+		<table>
+			<tr>
+				<td>Display a notification when going live:</td>
+				<td><input type="checkbox" name="isActivated" checked></td>
+			</tr>
+			<tr>
+				<td>Sound effect when going live:</td>
+				<td><input type="checkbox" name="notificationSoundEnabled" checked></td>
+			</tr>
+			<tr>
+				<td>'Live!' notification sound level:</td>
+				<td><input type="range" name="notificationVolume" min="1" max="100"></td>
+			</tr>
+		</table>
     </form>
 	<br>
-	<small class="soon">More options/functionality coming soon!</small>
+	<button class="testNotification">Test notification</button><br><br>
+	<small class="soon">Options are automaticly saved, more options/functionality coming soon!</small>
   </body>
 </html>

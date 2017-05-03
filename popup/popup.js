@@ -8,7 +8,6 @@ $(function() {
 });
 
 var liveCheck = function() {
-	
 	$.get('https://www.googleapis.com/youtube/v3/search', { part: 'snippet', channelId: CHANNEL_ID, type: 'video', eventType: 'live', key: API_KEY }, function(data) {
 		if (data['items'].length > 0) {
 			$('.stream-offline').addClass('hidden');
@@ -35,6 +34,6 @@ var getLatestTweet = function() {
 };
 
 document.addEventListener('DOMContentLoaded', function () {
-  liveCheck();
-  getLatestTweet();
+	liveCheck();
+	getLatestTweet();
 });
