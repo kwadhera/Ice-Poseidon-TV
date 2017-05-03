@@ -23,6 +23,21 @@
 	"default_title": "Ice Poseidon TV",
     "default_popup": "popup/popup.html"
   },
+  "content_scripts": [
+	{
+	  "js": [
+		"content.js"
+	  ],
+	  "css": [
+			"external/hint.min.css"
+		],
+		"run_at": "document_end",
+	    "matches": [
+			"*://gaming.youtube.com/*",
+			"*://pastebin.com/*" // TEMPORARY
+	  ]
+	}
+],
   "web_accessible_resources": [
     "64.png"
   ]
