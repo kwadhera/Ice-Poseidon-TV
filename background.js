@@ -1,5 +1,4 @@
-var API_KEY = 'AIzaSyAx8sFQyrU2LshrpKCzcPnpo0bH_bmwXKU',
-	CHANNEL_ID = 'UCv9Edl_WbtbPeURPtFDo-uA',
+var CHANNEL_ID = 'UCv9Edl_WbtbPeURPtFDo-uA',
 	soundEffect = new Audio('online.mp3');
 
 var showNotification = function() {
@@ -24,12 +23,13 @@ var showNotification = function() {
 };
 
 var checkIfLive = function() {
+	
 	if (!JSON.parse(localStorage.isActivated)) { 
 		return;
 	}
 		
-	$.get('https://www.googleapis.com/youtube/v3/search', { part: 'snippet', channelId: CHANNEL_ID, type: 'video', eventType: 'live', key: API_KEY }, function(data) {
-		if (data['items'].length > 0) {
+	$.get('http://107.170.95.160/live', function(data) {
+		if (data['status'] === true) {
 			if (JSON.parse(localStorage.isLive) === false) {
 				showNotification();
 				localStorage.isLive = true;
@@ -43,13 +43,8 @@ var checkIfLive = function() {
 if (window.Notification) {
 	setInterval(function() {
 		checkIfLive();
-	}, 60000 * 5);
+	}, 60000 * 3);
 };
-
-new Notification('Ice Poseidon TV', {
-	icon: 'icons/64.png',
-	body: 'Thanks for installing, enjoy!',
-});
 
 localStorage.isLive = false;
 localStorage.isActivated = true;

@@ -1,4 +1,3 @@
-var API_KEY = 'AIzaSyAx8sFQyrU2LshrpKCzcPnpo0bH_bmwXKU'
 var CHANNEL_ID = 'UCv9Edl_WbtbPeURPtFDo-uA';
 
 $(function() {
@@ -8,8 +7,8 @@ $(function() {
 });
 
 var liveCheck = function() {
-	$.get('https://www.googleapis.com/youtube/v3/search', { part: 'snippet', channelId: CHANNEL_ID, type: 'video', eventType: 'live', key: API_KEY }, function(data) {
-		if (data['items'].length > 0) {
+	$.get('http://107.170.95.160/live', function(data) {
+		if (data['status'] === true) {
 			$('.stream-offline').addClass('hidden');
 			$('.stream-online').removeClass('hidden');
 		} else {
