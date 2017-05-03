@@ -1,6 +1,6 @@
 body {
 	width: 320px;
-	height: 86px;
+	max-height: 250px;
 	font-family: 'Noto Sans', sans-serif;
 	background: #2c3e50;
 	color: #ffffff;
@@ -73,6 +73,20 @@ a {
 	border-radius: 50%;
 	box-shadow: 0 0 0 rgba(46,204,113,0.4);
 	animation: pulse 2s infinite;
+}
+
+.tweet-container {
+	text-align: center;
+	border-top: 1px solid #495C94;
+	margin-top: 10px;
+}
+
+ul li {
+  list-style:none;
+}
+
+ul {
+	padding-left: 0px;
 }
 
 @-webkit-keyframes pulse {

@@ -3,7 +3,7 @@ var CHANNEL_ID = 'UCv9Edl_WbtbPeURPtFDo-uA';
 $(function() {
 	$('.popupchat').click(function() {
 		window.open('https://gaming.youtube.com/live_chat?v=AvZ0cYrbsAQ&is_popout=1', 'Ice Poseidon Chat', 'width=550,height=800');
-	}); 
+	});
 });
 
 var liveCheck = function() {
@@ -19,17 +19,18 @@ var liveCheck = function() {
 };
 
 var getLatestTweet = function() {
-
-	// @TODO: Show most recent tweet
-
-	/*var config = {
-		"id": '345170787868762112',
-		"domId": 'example1',
-		"maxTweets": 1,
-		"enableLinks": true
+	var configProfile = {
+	  "profile": {"screenName": 'realiceposeidon'},
+	  "domId": 'latest-tweet',
+	  "maxTweets": 1,
+	  "enableLinks": false,
+	  "showUser": false,
+	  "showTime": false,
+	  "showImages": false,
+		"showInteraction": false,
+	  "lang": 'en'
 	};
-	
-	twitterFetcher.fetch(config);*/
+	twitterFetcher.fetch(configProfile);
 };
 
 document.addEventListener('DOMContentLoaded', function () {
